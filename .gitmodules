@@ -4,3 +4,6 @@
 [submodule "BasicGE/vender/imgui"]
 	path = BasicGE/vender/imgui
 	url = https://github.com/TheCherno/imgui
+[submodule "BasicGE/vender/glm"]
+	path = BasicGE/vender/glm
+	url = https://github.com/g-truc/glm
