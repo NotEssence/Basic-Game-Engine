@@ -1,0 +1,13 @@
+.vs
+
+.logs
+
+BGE_App
+
+bin
+bin-int
+
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user

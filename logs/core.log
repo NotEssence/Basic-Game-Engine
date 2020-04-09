@@ -1,0 +1,16 @@
+04/09/20 15:42:06 [bge] [info]:    Initializing Application
+04/09/20 15:42:06 [bge] [info]:    Creating Window "Basic Game Engine": 1280, 720
+04/09/20 15:42:07 [bge] [info]:    Enabled VSync for "Basic Game Engine"
+04/09/20 15:42:07 [bge] [info]:    Successfully Set Window Size Events
+04/09/20 15:42:07 [bge] [info]:    Successfully Set Window Close Callbacks
+04/09/20 15:42:07 [bge] [info]:    Successfully Set Key Callbacks
+04/09/20 15:42:07 [bge] [info]:    Successfully Set Mouse Button Callbacks
+04/09/20 15:42:07 [bge] [info]:    Successfully Set Mouse Scroll Callbacks
+04/09/20 15:42:07 [bge] [info]:    Successfully Set Mouse Move Callbacks
+04/09/20 15:42:07 [bge] [info]:    Successfully Created Window: "Basic Game Engine"
+04/09/20 15:42:07 [bge] [info]:    Successfully Set ImGui Custom Styles
+04/09/20 15:42:07 [bge] [info]:    Successfully Set ImGui Styles
+04/09/20 15:42:07 [bge] [info]:    Successfully Initialized Dear ImGui
+04/09/20 15:42:07 [bge] [info]:    Entering Game Loop . . .
+04/09/20 15:42:58 [bge] [info]:    Window Closed
+04/09/20 15:42:58 [bge] [info]:    Application Shutting down
