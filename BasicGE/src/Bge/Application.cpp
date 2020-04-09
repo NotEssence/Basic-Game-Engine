@@ -42,22 +42,13 @@ namespace Bge
 			 0.0f,  0.5f, 0.0f
 		};
 
-		m_VertexBuffer = Gfx::VertexBuffer::Create(vertices, sizeof(vertices));
-		m_VertexBuffer->Bind();
+		m_VertexBuffer.reset(Gfx::VertexBuffer::Create(vertices, sizeof(vertices)));
 		
-		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
 		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 3, nullptr);
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 3, 0);
 
-		glGenBuffers(1, &m_IndexBuffer);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBuffer);
-
-		unsigned int indices[3] = {
-			0, 1, 2
-		};
-
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+		BGuint indices[3] = { 0, 1, 2 };
+		m_IndexBuffer.reset(Gfx::IndexBuffer::Create(indices, sizeof(indices) / sizeof(BGuint)));
 
 		std::string vertexshader = R"(
 			#version 330 core
@@ -85,7 +76,7 @@ namespace Bge
 			}	
 		)";
 
-		m_Shader = std::make_unique<Gfx::Shader>(vertexshader, pixelShader);
+		m_Shader.reset(new Gfx::Shader(vertexshader, pixelShader));
 
 		BGE_REMOVE_TRACE;
 	}
@@ -111,7 +102,7 @@ namespace Bge
 
 			m_Shader->Bind();
 			glBindVertexArray(m_VertexArray);
-			glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, nullptr);
+			glDrawElements(GL_TRIANGLES, m_IndexBuffer->GetCount(), GL_UNSIGNED_INT, nullptr);
 
 			for (auto layer : m_LayerStack)
 			{

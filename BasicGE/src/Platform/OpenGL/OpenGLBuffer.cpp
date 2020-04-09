@@ -12,8 +12,8 @@ namespace Bge::Gfx
 	OpenGLVertexBuffer::OpenGLVertexBuffer(float* vertices, size_t size)
 	{
 		glCreateBuffers(1, &m_RendererID);
-		BGE_CORE_ASSERT(vertices != nullptr);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+		glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);
+		glBufferData(GL_ARRAY_BUFFER, size, vertices, GL_STATIC_DRAW);
 	}
 
 	OpenGLVertexBuffer::~OpenGLVertexBuffer()
@@ -32,25 +32,26 @@ namespace Bge::Gfx
 	}
 
 	// IndexBuffer
-	OpenGLIndexBuffer::OpenGLIndexBuffer(float* indices, size_t size)
+	OpenGLIndexBuffer::OpenGLIndexBuffer(BGuint* indices, size_t count)
+		: m_Count(count)
 	{ 
 		glCreateBuffers(1, &m_RendererID);
-		BGE_CORE_ASSERT(indices != nullptr);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_RendererID);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, count * sizeof(BGuint), indices, GL_STATIC_DRAW);
 	}
 
 	OpenGLIndexBuffer::~OpenGLIndexBuffer()
 	{ 
-	
+		glDeleteBuffers(1, &m_RendererID);
 	}
-	
+
 	void OpenGLIndexBuffer::Bind() const
 	{
-	
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_RendererID);
 	}
 	
 	void OpenGLIndexBuffer::UnBind() const
 	{
-	
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	}
 }

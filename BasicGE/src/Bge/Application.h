@@ -33,8 +33,9 @@ namespace Bge
 
 		static Application* s_Instance;
 
-		uint32_t m_VertexArray, m_IndexBuffer;
+		uint32_t m_VertexArray;
 		std::unique_ptr<Gfx::VertexBuffer> m_VertexBuffer;
+		std::unique_ptr<Gfx::IndexBuffer> m_IndexBuffer;
 		std::unique_ptr<Gfx::Shader> m_Shader;
 
 		bool OnWindowClose(WindowCloseEvent& e);

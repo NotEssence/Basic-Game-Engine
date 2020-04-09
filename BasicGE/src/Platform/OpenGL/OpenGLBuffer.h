@@ -20,9 +20,12 @@ namespace Bge::Gfx
 	{
 	private:
 		BGuint m_RendererID;
+		BGuint m_Count;
 	public:
-		OpenGLIndexBuffer(float* indices, size_t size);
+		OpenGLIndexBuffer(BGuint* indices, size_t size);
 		virtual ~OpenGLIndexBuffer();
+
+		virtual BGuint GetCount() const override { return m_Count; };
 
 		virtual void Bind() const override;
 		virtual void UnBind() const override;

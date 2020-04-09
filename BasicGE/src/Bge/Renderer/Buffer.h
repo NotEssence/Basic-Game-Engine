@@ -23,6 +23,8 @@ namespace Bge::Gfx
 		virtual void Bind() const = 0;
 		virtual void UnBind() const = 0;
 
-		static IndexBuffer* Create(BGuint* vertices, size_t size);
+		virtual BGuint GetCount() const = 0;
+
+		static IndexBuffer* Create(BGuint* vertices, size_t count);
 	};
 }
