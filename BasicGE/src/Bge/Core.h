@@ -1,5 +1,9 @@
 #pragma once
 
+
+// TODO: Add Back Support for Building With Shared Libs
+
+// Moved to Static Libs from Shared Libs
 #if 0
 #	ifdef BGE_WIN64
 #		if !defined(BGE_BUILD_STATIC) && defined(BGE_BUILD_SHARED) 
