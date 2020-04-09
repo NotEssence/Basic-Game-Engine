@@ -36,17 +36,14 @@ namespace Bge
 		glGenVertexArrays(1, &m_VertexArray);
 		glBindVertexArray(m_VertexArray);
 
-		glGenBuffers(1, &m_VertexBuffer);
-		glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
-
 		float vertices[3 * 3] = {
 			-0.5f, -0.5f, 0.0f,
 			 0.5f, -0.5f, 0.0f,
 			 0.0f,  0.5f, 0.0f
 		};
 
-		Gfx::VertexBuffer buffer = Gfx::VertexBuffer::Create(sizeof(vertices), vertices);
-		buffer.Bind();
+		m_VertexBuffer = Gfx::VertexBuffer::Create(vertices, sizeof(vertices));
+		m_VertexBuffer->Bind();
 		
 		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 

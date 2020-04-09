@@ -10,7 +10,7 @@ namespace Bge::Gfx
 		BGuint m_RendererID;
 	public:
 		OpenGLVertexBuffer(float* vertices, size_t size);
-		virtual ~OpenGLVertexBuffer() = default;
+		virtual ~OpenGLVertexBuffer();
 
 		virtual void Bind() const override;
 		virtual void UnBind() const override;
@@ -22,7 +22,7 @@ namespace Bge::Gfx
 		BGuint m_RendererID;
 	public:
 		OpenGLIndexBuffer(float* indices, size_t size);
-		virtual ~OpenGLIndexBuffer() = default;
+		virtual ~OpenGLIndexBuffer();
 
 		virtual void Bind() const override;
 		virtual void UnBind() const override;

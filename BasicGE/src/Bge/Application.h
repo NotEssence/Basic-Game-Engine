@@ -18,6 +18,8 @@
 // Temporary - Remove 
 #include "Bge/Renderer/Shader.h"
 
+#include "Bge/Renderer/Buffer.h"
+
 namespace Bge
 {
 	class BGE_API Application
@@ -31,7 +33,8 @@ namespace Bge
 
 		static Application* s_Instance;
 
-		uint32_t m_VertexBuffer, m_VertexArray, m_IndexBuffer;
+		uint32_t m_VertexArray, m_IndexBuffer;
+		std::unique_ptr<Gfx::VertexBuffer> m_VertexBuffer;
 		std::unique_ptr<Gfx::Shader> m_Shader;
 
 		bool OnWindowClose(WindowCloseEvent& e);
