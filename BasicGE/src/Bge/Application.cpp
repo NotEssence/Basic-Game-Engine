@@ -113,18 +113,18 @@ namespace Bge
 			glClearColor(0.1f, 0.1f, 0.1f, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
 
-			Gfx::RendererCmd::Clear({ 1.0f, 0.0f, 1.0f, 1.0f });
+			// Gfx::RendererCmd::Clear({ 1.0f, 0.0f, 1.0f, 1.0f });
 
 			// -------------- Scene -------------- 
-			Gfx::Renderer::BeginScene();
+			// Gfx::Renderer::BeginScene();
 
-			m_PinkShader->Bind();
-			Gfx::Renderer::SubmitMesh(m_SquareVertexArray);
-			
-			Gfx::Renderer::EndScene();
-			// -----------------------------------
-
-			Gfx::Renderer::Flush();
+			// m_PinkShader->Bind();
+			// Gfx::Renderer::SubmitMesh(m_SquareVertexArray);
+			// 
+			// Gfx::Renderer::EndScene();
+			// // -----------------------------------
+			// 
+			// Gfx::Renderer::Flush();
 
 			m_PinkShader->Bind();
 			m_SquareVertexArray->Bind();
