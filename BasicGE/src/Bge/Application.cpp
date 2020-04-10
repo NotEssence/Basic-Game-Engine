@@ -7,6 +7,8 @@
 #include "Bge/MouseButtonCodes.h"
 #include "Bge/Input.h"
 
+#include "Bge/Renderer/Renderer.h"
+
 #include <glad/glad.h>
 
 namespace Bge
@@ -110,6 +112,19 @@ namespace Bge
 		{
 			glClearColor(0.1f, 0.1f, 0.1f, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
+
+			Gfx::RendererCmd::Clear({ 1.0f, 0.0f, 1.0f, 1.0f });
+
+			// -------------- Scene -------------- 
+			Gfx::Renderer::BeginScene();
+
+			m_PinkShader->Bind();
+			Gfx::Renderer::SubmitMesh(m_SquareVertexArray);
+			
+			Gfx::Renderer::EndScene();
+			// -----------------------------------
+
+			Gfx::Renderer::Flush();
 
 			m_PinkShader->Bind();
 			m_SquareVertexArray->Bind();
