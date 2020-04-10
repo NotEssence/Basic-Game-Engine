@@ -1,16 +1,19 @@
-04/09/20 21:19:42 [bge] [info]:    Initializing Application
-04/09/20 21:19:42 [bge] [info]:    Creating Window "Basic Game Engine": 1280, 720
-04/09/20 21:19:43 [bge] [info]:    Enabled VSync for "Basic Game Engine"
-04/09/20 21:19:43 [bge] [info]:    Successfully Set Window Size Events
-04/09/20 21:19:43 [bge] [info]:    Successfully Set Window Close Callbacks
-04/09/20 21:19:43 [bge] [info]:    Successfully Set Key Callbacks
-04/09/20 21:19:43 [bge] [info]:    Successfully Set Mouse Button Callbacks
-04/09/20 21:19:43 [bge] [info]:    Successfully Set Mouse Scroll Callbacks
-04/09/20 21:19:43 [bge] [info]:    Successfully Set Mouse Move Callbacks
-04/09/20 21:19:43 [bge] [info]:    Successfully Created Window: "Basic Game Engine"
-04/09/20 21:19:43 [bge] [info]:    Successfully Set ImGui Custom Styles
-04/09/20 21:19:43 [bge] [info]:    Successfully Set ImGui Styles
-04/09/20 21:19:43 [bge] [info]:    Successfully Initialized Dear ImGui
-04/09/20 21:19:43 [bge] [info]:    Entering Game Loop . . .
-04/09/20 21:19:46 [bge] [info]:    Window Closed
-04/09/20 21:19:46 [bge] [info]:    Application Shutting down
+04/10/20 14:55:03 [bge] [info]:    Initializing Application
+04/10/20 14:55:03 [bge] [info]:    Creating Window "Basic Game Engine": 1280, 720
+04/10/20 14:55:03 [bge] [info]:    Enabled VSync for "Basic Game Engine"
+04/10/20 14:55:03 [bge] [info]:    Successfully Set Window Size Callbacks
+04/10/20 14:55:03 [bge] [info]:    Successfully Set Window Close Callbacks
+04/10/20 14:55:03 [bge] [info]:    Successfully Set Key Callbacks
+04/10/20 14:55:03 [bge] [info]:    Successfully Set Mouse Button Callbacks
+04/10/20 14:55:03 [bge] [info]:    Successfully Set Mouse Scroll Callbacks
+04/10/20 14:55:03 [bge] [info]:    Successfully Set Mouse Move Callbacks
+04/10/20 14:55:03 [bge] [info]:    Successfully Created Window: "Basic Game Engine"
+04/10/20 14:55:03 [bge] [info]:    Successfully Set ImGui Custom Styles
+04/10/20 14:55:03 [bge] [info]:    Successfully Set ImGui Styles
+04/10/20 14:55:03 [bge] [info]:    Successfully Initialized Dear ImGui
+04/10/20 14:55:03 [bge] [error]:    Vertex Buffer Has No Layout
+	at AddVertexBuffer[C:\Users\User\source\repos\BasicGE\BasicGE\src\Platform\OpenGL\OpenGLVertexArray.cpp:57]
+	at Application[C:\Users\User\source\repos\BasicGE\BasicGE\src\Bge\Application.cpp:19]
+04/10/20 14:55:03 [bge] [info]:    Entering Game Loop . . .
+04/10/20 14:55:29 [bge] [info]:    Window Closed
+04/10/20 14:55:29 [bge] [info]:    Application Shutting down

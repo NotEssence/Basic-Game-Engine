@@ -28,8 +28,10 @@ namespace Bge::Gfx
 		case RendererAPI::GL4:
 			return new OpenGLIndexBuffer(indices, size);
 		default:
-			BGE_CORE_ASSERT(true);
+			BGE_CORE_ASSERT(false);
 			return nullptr;
 		}
 	}
+
+	// Buffer Layout
 }

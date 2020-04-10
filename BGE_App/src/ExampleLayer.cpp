@@ -1,6 +1,4 @@
 #include "ExampleLayer.h"
-#pragma once
-
 
 ExampleLayer::ExampleLayer()
 	: Layer("Example")

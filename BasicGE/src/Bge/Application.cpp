@@ -5,13 +5,13 @@
 #include "Bge/Logger.h"
 #include "Bge/KeyCode.h"
 #include "Bge/MouseButtonCodes.h"
-
 #include "Bge/Input.h"
 
 #include <glad/glad.h>
 
 namespace Bge
 {
+	// Temporary -- Remove!
 	Application* Application::s_Instance = nullptr;
 
 	Application::Application()
@@ -33,50 +33,61 @@ namespace Bge
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
 
-		glGenVertexArrays(1, &m_VertexArray);
-		glBindVertexArray(m_VertexArray);
+		m_VertexArray.reset(Gfx::VertexArray::Create());
 
-		float vertices[3 * 3] = {
-			-0.5f, -0.5f, 0.0f,
+		float squareVertices[] = {
+			-0.5f, -0.5f, 0.0f, 
 			 0.5f, -0.5f, 0.0f,
-			 0.0f,  0.5f, 0.0f
+			 0.5f,  0.5f, 0.0f,
+			-0.5f,  0.5f, 0.0f
 		};
 
-		m_VertexBuffer.reset(Gfx::VertexBuffer::Create(vertices, sizeof(vertices)));
+
+		m_SquareVertexArray.reset(Gfx::VertexArray::Create());
+		std::shared_ptr<Gfx::VertexBuffer> squareVertBuffer;
+		squareVertBuffer.reset(Gfx::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
+
+		squareVertBuffer->SetLayout({
+			{ Gfx::ShaderDataType::Float3, "position" }
+		});
 		
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 3, 0);
+		m_SquareVertexArray->AddVertexBuffer(squareVertBuffer);
 
-		BGuint indices[3] = { 0, 1, 2 };
-		m_IndexBuffer.reset(Gfx::IndexBuffer::Create(indices, sizeof(indices) / sizeof(BGuint)));
+		BGuint squareIndices[] = { 0, 1, 2, 2, 3, 0 };
 
-		std::string vertexshader = R"(
+		std::shared_ptr<Gfx::IndexBuffer> squareIndexBuffer;
+		squareIndexBuffer.reset(Gfx::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(BGuint)));
+
+		m_SquareVertexArray->SetIndexBuffer(squareIndexBuffer);
+
+		std::string pinkVertexshader = R"(
 			#version 330 core
 
 			layout(location = 0) in vec3 position;
+
 			out vec3 outPosition;
 
 			void main() 
 			{
-				gl_Position = vec4(position, 1.0f);
 				outPosition = position;
+				gl_Position = vec4(position, 1.0f);
 			}	
 		)";
 
 
-		std::string pixelShader = R"(
+		std::string pinkPixelShader = R"(
 			#version 330 core
 
-			layout(location = 0) out vec4 color;
+			layout(location = 0) out vec4 a_Color;
 			in vec3 outPosition;
 
 			void main() 
 			{
-				color = vec4(outPosition * 0.5f + 0.5f, 1.0f);
+				a_Color = vec4(1.0f, 0.0f, 1.0f, 1.0f);
 			}	
 		)";
 
-		m_Shader.reset(new Gfx::Shader(vertexshader, pixelShader));
+		m_PinkShader.reset(new Gfx::Shader(pinkVertexshader, pinkPixelShader));
 
 		BGE_REMOVE_TRACE;
 	}
@@ -100,9 +111,10 @@ namespace Bge
 			glClearColor(0.1f, 0.1f, 0.1f, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
 
-			m_Shader->Bind();
-			glBindVertexArray(m_VertexArray);
-			glDrawElements(GL_TRIANGLES, m_IndexBuffer->GetCount(), GL_UNSIGNED_INT, nullptr);
+			m_PinkShader->Bind();
+			m_SquareVertexArray->Bind();
+
+			glDrawElements(GL_TRIANGLES, m_SquareVertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
 
 			for (auto layer : m_LayerStack)
 			{

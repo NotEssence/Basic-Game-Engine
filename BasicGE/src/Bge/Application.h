@@ -15,10 +15,11 @@
 
 #include <cstdint>
 
-// Temporary - Remove 
+// --------------- Temporary ---------------
 #include "Bge/Renderer/Shader.h"
-
 #include "Bge/Renderer/Buffer.h"
+#include "Bge/Renderer/VertexArray.h"
+// -----------------------------------------
 
 namespace Bge
 {
@@ -33,11 +34,12 @@ namespace Bge
 
 		static Application* s_Instance;
 
-		uint32_t m_VertexArray;
-		std::unique_ptr<Gfx::VertexBuffer> m_VertexBuffer;
-		std::unique_ptr<Gfx::IndexBuffer> m_IndexBuffer;
-		std::unique_ptr<Gfx::Shader> m_Shader;
-
+		std::shared_ptr<Gfx::VertexArray> m_VertexArray;
+		std::shared_ptr<Gfx::VertexArray> m_SquareVertexArray;
+		std::shared_ptr<Gfx::Shader> m_Shader;
+		std::shared_ptr<Gfx::Shader> m_PinkShader;
+		
+		
 		bool OnWindowClose(WindowCloseEvent& e);
 	public:
 		Application();

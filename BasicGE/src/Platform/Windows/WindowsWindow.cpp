@@ -79,7 +79,7 @@ namespace Bge
 				data.eventCallbackFunction(event);
 			});
 		
-		BGE_CORE_INFO("Successfully Set Window Size Events");
+		BGE_CORE_INFO("Successfully Set Window Size Callbacks");
 
 		glfwSetWindowCloseCallback(m_Window, [](GLFWwindow* window)
 			{
